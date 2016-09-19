@@ -10,6 +10,7 @@
 
     <modules>
         <module>SuperSimpleStocks</module>
+        <module>RouletteGame</module>
     </modules>
 
     <properties>
