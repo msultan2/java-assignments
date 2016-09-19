@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd"> 
+
+<beans>
+	<bean id="tea" class="com.jpmorgan.simple.stocks.model.Stock">
+		<property name="stockSymbol" value="TEA"> </property>
+		<property name="stockType" value="COMMON"> </property>
+		<property name="lastDividend" value="0.0"> </property>
+		<property name="fixedDividend" value="0.0"> </property>
+		<property name="parValue" value="100.0"> </property>
+	</bean>
+		<bean id="pop" class="com.jpmorgan.simple.stocks.model.Stock">
+		<property name="stockSymbol" value="POP"> </property>
+		<property name="stockType" value="COMMON"> </property>
+		<property name="lastDividend" value="8.0"> </property>
+		<property name="fixedDividend" value="0.0"> </property>
+		<property name="parValue" value="100.0"> </property>
+	</bean>
+		<bean id="ale" class="com.jpmorgan.simple.stocks.model.Stock">
+		<property name="stockSymbol" value="ALE"> </property>
+		<property name="stockType" value="COMMON"> </property>
+		<property name="lastDividend" value="23.0"> </property>
+		<property name="fixedDividend" value="0.0"> </property>
+		<property name="parValue" value="60.0"> </property>
+	</bean>
+	<bean id="gin" class="com.jpmorgan.simple.stocks.model.Stock">
+		<property name="stockSymbol" value="GIN"> </property>
+		<property name="stockType" value="PREFERRED"> </property>
+		<property name="lastDividend" value="8.0"> </property>
+		<property name="fixedDividend" value="0.2"> </property>
+		<property name="parValue" value="100.0"> </property>
+	</bean>
+	<bean id="joe" class="com.jpmorgan.simple.stocks.model.Stock">
+		<property name="stockSymbol" value="JOE"> </property>
+		<property name="stockType" value="COMMON"> </property>
+		<property name="lastDividend" value="13.0"> </property>
+		<property name="fixedDividend" value="0.0"> </property>
+		<property name="parValue" value="250.0"> </property>
+	</bean>
+	
+</beans>
