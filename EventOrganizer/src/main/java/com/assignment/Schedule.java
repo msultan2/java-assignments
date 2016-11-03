@@ -14,18 +14,11 @@ import java.time.LocalTime;
  */
 public class Schedule {
 
-    LocalTime startTime;
-    LocalTime endTime;
-    Activity activity;
+    private LocalTime startTime;
+    private Activity activity;
 
     public Schedule(LocalTime time, Activity activity) {
         this.startTime = time;
-        this.activity = activity;
-    }
-
-    public Schedule(LocalTime startTime, LocalTime endTime, Activity activity) {
-        this.startTime = startTime;
-        this.endTime = endTime;
         this.activity = activity;
     }
 
@@ -35,10 +28,6 @@ public class Schedule {
 
     public LocalTime getStartTime() {
         return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Team {
 
-    List<Schedule> schedule;
+    private List<Schedule> schedule;
 
     public Team(List<Schedule> schedule) {
         this.schedule = schedule;
@@ -21,15 +21,19 @@ public class Team {
     }
     
     private void fillPresentationTime() {
-        this.schedule.add(new Schedule(LocalTime.NOON.plusHours(4), LocalTime.NOON.plusHours(4).plusMinutes(60), new Activity("Preentation", 60)));
+        this.schedule.add(new Schedule(LocalTime.NOON.plusHours(5), new Activity("Staff Motivation Presentation", 60)));
     }
 
     private void fillLunchTime() {
-        this.schedule.add(new Schedule(LocalTime.NOON, LocalTime.NOON.plusMinutes(60), new Activity("Lunch Time", 60)));
+        this.schedule.add(new Schedule(LocalTime.NOON, new Activity("Lunch Time", 60)));
     }
 
     public List<Schedule> getSchedule() {
         return schedule;
+    }
+
+    public Schedule lastSchedule() {
+        return schedule.get(schedule.size() - 1);
     }
 
     public LocalTime bestActivityTime(Activity activity) {
@@ -40,17 +44,18 @@ public class Team {
             for (int i = 0; i < schedule.size() - 1; i++) {
                 Schedule currentScheduleTime = schedule.get(i);
                 Schedule nextScheduleTime = schedule.get(i + 1);
-                if (withinTimeIntervals(currentScheduleTime, nextScheduleTime)) {
-                    return currentScheduleTime.getStartTime().plusMinutes(currentScheduleTime.activity.getTimeMinutes());
+                if (withinTimeIntervals(currentScheduleTime, nextScheduleTime, activity.getTimeMinutes())) {
+                    return currentScheduleTime.getStartTime().plusMinutes(currentScheduleTime.getActivity().getTimeMinutes());
                 }
             }
         }
         return LocalTime.MAX;
     }
 
-    private static boolean withinTimeIntervals(Schedule currentScheduleTime, Schedule nextScheduleTime) {
-        LocalTime currentScheduleEndTime = currentScheduleTime.getStartTime().plusMinutes(
-                currentScheduleTime.activity.getTimeMinutes());
+    private static boolean withinTimeIntervals(Schedule currentScheduleTime, Schedule nextScheduleTime, int activityDurationInMinutes) {
+        LocalTime currentScheduleEndTime = currentScheduleTime.getStartTime()
+                .plusMinutes(currentScheduleTime.getActivity().getTimeMinutes())
+                .plusMinutes(activityDurationInMinutes);
 
         return currentScheduleEndTime.isBefore(
                 nextScheduleTime.getStartTime());

@@ -43,8 +43,8 @@ public class Report {
     }
 
     private void displayTeamActivity(Team team) {
-        for (Schedule schedule : team.schedule) {
-            System.out.println(schedule.startTime + " " + schedule.getActivity().getActivity());
+        for (Schedule schedule : team.getSchedule()) {
+            System.out.println(schedule.getStartTime() + " " + schedule.getActivity().getActivity());
         }
     }
 }
