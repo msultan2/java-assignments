@@ -11,7 +11,6 @@
     <modules>
         <module>SuperSimpleStocks</module>
         <module>RouletteGame</module>
-        <module>assignments</module>
         <module>EventOrganizer</module>
     </modules>
 
