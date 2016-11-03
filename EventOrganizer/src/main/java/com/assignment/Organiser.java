@@ -8,6 +8,7 @@ package com.assignment;
 import com.assignment.entities.Activity;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -30,14 +31,23 @@ public class Organiser {
 
         List<Team> teams = createTeams();
         //sort by Activity
-//        Collections.sort(activities, (Activity o1, Activity o2) -> o2.getTimeMinutes() - o1.getTimeMinutes());
+        Collections.sort(activities, (Activity o1, Activity o2) -> o2.getTimeMinutes() - o1.getTimeMinutes());
 
-        for (Team team : teams) {
-            while (!activities.isEmpty() && team.lastSchedule().getActivity().getActivity().equals("Staff Motivation Presentation")) {
+//        for (Team team : teams) {
+//            while (!activities.isEmpty() && team.lastSchedule().getActivity().getActivity().equals("Staff Motivation Presentation")) {
+//                    team.fillActivity(activities.get(0));
+//                activities.remove(0);
+//            }
+//        }
+        while (!activities.isEmpty()) {
+            for (Team team : teams) {
+                if (team.lastSchedule().getActivity().getActivity().equals("Staff Motivation Presentation")) {
                     team.fillActivity(activities.get(0));
-                activities.remove(0);
+                    activities.remove(0);
+                }
             }
         }
+
         return teams;
     }
 
